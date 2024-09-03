@@ -1,0 +1,112 @@
+<%- include('./partials/header') %>
+<link rel="stylesheet" type="text/css" href="/stylesheets/products.css">
+</link>
+<div class="container">
+    <div id="banner" class="row justify-content-between align-items-center">
+        <div class="col-lg-5" id="descriptive">
+            <div class="contents d-flex flex-column justify-content-around">
+                <h5 class="mb-4 font-weight-bold" style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #4D2768;">Want to Expand Your Business?</h5>
+                <h1 class="mb-4 mt-2 font-weight-bold" style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: black;">
+                    Bring your business to AatmaNiti.
+                </h1>
+                <h5 class="mb-4 mt-1 font-weight-bold" style="color: #281436;">
+                    
+                </h5>
+                <div class="mt-1">
+                    <button type="button" class="btn mb-2 btn-primary"><a href="#scroll-target"></a>Buy products</a></button>
+                    <a type="button" class="btn mb-2 ml-4 btn-primary" href="./products/new">Sell products</a>
+                </div>               
+            </div>
+           
+        </div>
+        <div class="col-lg-5 mt-3 mt-lg-0" id="illustration">
+            <div class="row justify-content-center align-items-center">
+                <img class="img-fluid" src=" https://img.onmanorama.com/content/dam/mm/en/lifestyle/women/images/2020/9/11/indian-working-woman-mothers-c.jpg" alt="">
+            </div>
+        </div>
+        </div>
+        </div>
+    <section id="scroll-target"class=" h-100">
+        <div class="container py-5">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+
+                <% products.forEach(function(product){ %>
+                    <div class="col">
+                        <div class="card shadow h-100" style="border: none">
+                            <img src="<%= product.image %>" class="card-img-top" alt="Image Card laceholder">
+                            <div class="card-body d-flex flex-column">
+                                <h3 class="card-title mb-3 text-danger d-flex justify-content-between">
+                                    
+                                    <%= product.productname %>
+                                    <fieldset class="rating">
+                                        <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="5 stars"></label>
+                                        <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="4.5 stars"></label>
+                                        <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="4 stars"></label>
+                                        <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="3.5 stars"></label>
+                                        <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="3 stars"></label>
+                                        <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="2.5 stars"></label>
+                                        <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="2 stars"></label>
+                                        <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="1.5 stars"></label>
+                                        <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="1 star"></label>
+                                        <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="0.5 stars"></label>
+                                    </fieldset>
+                                        </h5>
+                                        <h5 class="card-title mb-3 text-danger">
+                                            <%= product.producttype %>
+                                        </h5>
+                                        <p class="card-text flex-grow-1">
+                                            <ul>
+                                                <li>Producer:
+                                                    <%= product.producer %>
+                                                </li>
+                                                <li>Place of production:
+                                                    <%= product.city %>,
+                                                        <%= product.state %>
+                                                </li>
+                                                <li>Contact:
+                                                    <%= product.phone %>
+                                                </li>
+                                                <li>quantity:
+                                                    <%= product.quantity %>
+                                                </li>
+                                                <li>rating:
+                                                    <span id="random"></span>
+                                                </li>
+                                            </ul>
+                                        </p>
+                                        <div class="">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="btn-group btn-group-sm">
+                                                        <button class="btn btn-danger">
+                                                            Details
+                                                        </button>
+                                                        <div class="btn active btn-danger">
+                                                            +
+                                                        </div>
+                                                        <div class="btn btn-danger">
+                                                            -
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col d-flex justify-content-end align-items-center">
+                                                    <small class="text-muted d-flex justify-content-end align-items-center">
+                                            <div class="btn-sm btn-danger">
+                                                ₹. <%= product.price %>
+                                            </div>
+                                        </small>
+                                                </div>
+                                            </div>
+                                        </div>
+                            </div>
+                        </div>
+                    </div>
+                    <% }); %>
+
+            </div>
+        </div>
+    </section>
+    <script>
+        document.getElementById("random").innerHTML = Math.floor(Math.random() * 10)/2;
+    </script>
+    <%- include('./partials/footer') %>
